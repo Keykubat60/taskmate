@@ -3,3 +3,43 @@
 {% block  title%}
     <title> Todo List Manage - Taskmate</title>
 {% endblock title %}
+
+{% block content %}
+<div class="container">
+<table class="table table-bordered" >
+    <thead>
+        <tr>
+            <th scope="col">Task</th>
+            <th scope="col">Done</th>
+            <th scope="col">Edit</th>
+            <th scope="col">delete</th>
+        </tr>
+    </thead>
+     <tbody>
+
+    <div class="container">
+    {% if all_tasks %}
+        {% for obj in all_tasks %}
+            {% if obj.done %}
+                <tr class="table-success">
+                    <th scope="row">{{obj.task}}</th>
+                        <td>Mark this Pending</a></td>
+                        <td>Edit</a></td>
+                        <td>Delete</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <th scope="row">{{obj.task}}</th>
+                        <td>Mark this Completed</a></td>
+                        <td>Edit</a></td>
+                        <td>Delete</a> </td>
+                    </tr>
+            {% endif %}
+
+        {% endfor %}
+    {% endif %}
+    </div>
+     </tbody>
+</table>
+</div>
+{% endblock %}
