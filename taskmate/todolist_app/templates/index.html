@@ -1,11 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title%}
     <title> Home Manage - Home Page</title>
 {% endblock title%}
 
 {% block content %}
     <div class="container">
-        <h1>{{index_text}}</h1>
+
+        <div class="d-flex justify-content-evenly">
+
+             <div style="width: 40%"><img src=" {% static 'images/home/note1.jpg' %}" alt="Nature" class="img-fluid"></div>
+             <div style="width: 40%" ><img src="{% static 'images/home/note2.jpg' %}" alt="Nature" class="img-fluid"></div>
+
+        </div>
+        <div class="text-center" style="margin-top: 20px">
+            <p class="fs-2 fw-bold">Quik And Easy To Use, Anytime, Anywhere!</p>
+            <p class="fs-3">"Plan Your Day Better, Get Your Life Organized"</p>
+            <p lass="fs-4 fw-lighter">TASKMATE Lets You Keep Track Of Your Task in One Place</p>
+            <a href=""><button type="button" class="btn btn-primary btn-lg">Get Started!</button></a>
+        </div>
 
     </div>
 {% endblock content %}
