@@ -4,9 +4,9 @@ from todolist_app.forms import TaskForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 
+
 # Create your views here.
 def todolist(request):
-
     if request.method == "POST":
         form = TaskForm(request.POST or None)
         if form.is_valid():
@@ -20,18 +20,19 @@ def todolist(request):
         page = request.GET.get('pg')
         all_tasks = paginator.get_page(page)
 
-
         return render(request, 'todolist.html', {'all_tasks': all_tasks})
+
 
 def delete_task(request, task_id):
     task = TaskList.objects.get(pk=task_id)
     task.delete()
     return redirect("todolist")
 
-def edit_task(request,task_id):
+
+def edit_task(request, task_id):
     if request.method == "POST":
         task = TaskList.objects.get(pk=task_id)
-        form = TaskForm(request.POST or None, instance = task)
+        form = TaskForm(request.POST or None, instance=task)
         if form.is_valid():
             form.save()
 
@@ -43,18 +44,19 @@ def edit_task(request,task_id):
 
         return render(request, 'edit.html', {'task_obj': task_obj})
 
-def complete_task(request,task_id):
+
+def complete_task(request, task_id):
     task = TaskList.objects.get(pk=task_id)
     task.done = True
     task.save()
     return redirect("todolist")
 
-def pending_task(request,task_id):
+
+def pending_task(request, task_id):
     task = TaskList.objects.get(pk=task_id)
     task.done = False
     task.save()
     return redirect("todolist")
-
 
 
 def contact(request):
@@ -67,7 +69,7 @@ def contact(request):
         'contact': "Welcome to Contact Page.",
 
     }
-    return render(request, 'contact.html',context)
+    return render(request, 'contact.html', context)
 
 
 def about(request):
@@ -80,4 +82,4 @@ def about(request):
         'about': "Welcome to About Page.",
 
     }
-    return render(request, 'about.html',context)
+    return render(request, 'about.html', context)
