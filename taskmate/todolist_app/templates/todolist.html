@@ -18,19 +18,19 @@
     {% endif %}
       <form method="POST">
     {% csrf_token %}
-  <div class="mb-3">
-    <input type="text" class="form-control" name="task" placeholder="New Task">
+  <div class="d-flex">
+      <input type="text" class="form-control d-inline-block" name="task" placeholder="New Task">
+      <button type="submit" class="btn btn-primary d-inline-block">Add</button>
   </div>
-  <button type="submit" class="btn btn-primary">Add</button>
 </form>
     <br>
-<table class="table table-bordered" >
-    <thead>
+<table class="table table-bordered text-center " >
+    <thead class="table-dark">
         <tr>
-            <th scope="col">Task</th>
-            <th scope="col">Done</th>
-            <th scope="col">Edit</th>
-            <th scope="col">delete</th>
+            <th class="col-7">Task</th>
+            <th class="col-1">Done</th>
+            <th class="col-1">Edit</th>
+            <th class="col-1">delete</th>
         </tr>
     </thead>
      <tbody>
@@ -40,17 +40,17 @@
         {% for obj in all_tasks %}
             {% if obj.done %}
                <tr class="table-success">
-                    <th scope="row">{{obj.task}}</th>
-                        <td><a href="{% url 'pending_task' obj.id %}"><button type="button" class="btn btn-light">Done</button></a></td>
-                        <td><a href="{% url 'edit_task' obj.id %}"><button type="button" class="btn btn-secondary">Edit</button></a></td>
-                        <td><a href="{% url 'delete_task' obj.id %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                    <th class="col-7">{{obj.task}}</th>
+                        <td class="col-1"><a href="{% url 'pending_task' obj.id %}"><button type="button" class="btn btn-light">Done</button></a></td>
+                        <td class="col-1"><a href="{% url 'edit_task' obj.id %}"><button type="button" class="btn btn-secondary">Edit</button></a></td>
+                        <td class="col-1"><a href="{% url 'delete_task' obj.id %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
                 </tr>
             {% else %}
                 <tr>
-                    <th scope="row">{{obj.task}}</th>
-                        <td><a href="{% url 'complete_task' obj.id %}"><button type="button" class="btn btn-success">Not Done</button></a></td>
-                        <td><a href="{% url 'edit_task' obj.id %}"><button type="button" class="btn btn-secondary">Edit</button></a></td>
-                        <td><a href="{% url 'delete_task' obj.id %}"><button type="button" class="btn btn-danger">Delete</button></a> </td>
+                    <th class="col-7">{{obj.task}}</th>
+                        <td class="col-1"><a href="{% url 'complete_task' obj.id %}"><button type="button" class="btn btn-success">Active</button></a></td>
+                        <td class="col-1"><a href="{% url 'edit_task' obj.id %}"><button type="button" class="btn btn-secondary">Edit</button></a></td>
+                        <td class="col-1"><a href="{% url 'delete_task' obj.id %}"><button type="button" class="btn btn-danger">Delete</button></a> </td>
                     </tr>
             {% endif %}
 
