@@ -59,6 +59,19 @@ def pending_task(request, task_id):
     return redirect("todolist")
 
 
+def index(request):
+    """
+    1. rendert ein HTML datei als Antwort zurück
+    2. Ein inhalt{} wird immer erstellt auch wenn es leer sein sollte
+
+    """
+    context = {
+        'index_text': "Welcome to Home Page.",
+
+    }
+    return render(request, 'index.html', context)
+
+
 def contact(request):
     """
     1. rendert ein HTML datei als Antwort zurück
