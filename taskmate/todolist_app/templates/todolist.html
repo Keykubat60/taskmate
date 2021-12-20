@@ -39,18 +39,18 @@
     {% if all_tasks %}
         {% for obj in all_tasks %}
             {% if obj.done %}
-                <tr class="table-success">
+               <tr class="table-success">
                     <th scope="row">{{obj.task}}</th>
-                        <td>Mark this Pending</a></td>
-                        <td>Edit</a></td>
-                        <td>Delete</a></td>
+                        <td>Mark this Pending</td>
+                        <td>Edit</td>
+                        <td><a href="{% url 'delete_task' obj.id %}">Delete</a></td>
                 </tr>
             {% else %}
                 <tr>
                     <th scope="row">{{obj.task}}</th>
-                        <td>Mark this Completed</a></td>
-                        <td>Edit</a></td>
-                        <td>Delete</a> </td>
+                        <td>Mark this Completed</td>
+                        <td>Edit</td>
+                        <td><a href="{% url 'delete_task' obj.id %}">Delete</a> </td>
                     </tr>
             {% endif %}
 
