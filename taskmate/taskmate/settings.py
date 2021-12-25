@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todolist_app',
     'users_app',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -121,6 +122,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [(os.path.join(BASE_DIR, 'static'))]
 VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
