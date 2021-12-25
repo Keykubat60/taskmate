@@ -7,10 +7,13 @@ from django.contrib import messages
 def register(request):
 
     if request.method == "POST":
-        register_form = UserCreationForm(request)
-        #register_form.save()
-        messages.success(request,("SUCCESFUL you create an user account!"))
-        return redirect("register")
+        register_form = UserCreationForm(request.POST)
+        if register_form.is_valid():
+            register_form.save()
+            messages.success(request,("SUCCESFUL you create an user account!"))
+            return redirect("register")
+
+
     else:
 
 
