@@ -22,14 +22,35 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto  mb-lg-0">
       <a class="nav-link" href="{% url 'index' %}">Home</a>
         <a class="nav-link" href="{% url 'todolist' %}">Todo List</a>
         <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
         <a class="nav-link" href="{% url 'about' %}">About Us</a>
       </ul>
+
+    <div>
+{% if user.is_authenticated %}
+              <div class="d-flex">
+               <ul class="navbar-nav  mb-2 mb-lg-0">
+                  <a class="nav-link" style=" margin-top: auto ; margin-bottom: auto;  color: white" >{{ user.username }}</a>
+                  <a class="nav-link" href="{% url 'logout' %}"><button class="btn btn-outline-secondary" type="submit">Logout</button></a>
+               </ul>
     </div>
+          {% else %}
+    <div class="d-flex">
+    <ul class="navbar-nav me-auto mb-lg-0">
+                  <a class="nav-link" href="{% url 'login' %}"><button class="btn btn-outline-success" type="submit">Login</button></a>
+                  <a class="nav-link" href="{% url 'register' %}"><button class="btn btn-outline-primary" type="submit">Register</button></a>
+    </ul>
+    </div>
+          {% endif %}
+    </div>
+
+    </div>
+
   </div>
+
       </nav>
   </div>
   <div style="margin: 40px 10% 0 10% " >
