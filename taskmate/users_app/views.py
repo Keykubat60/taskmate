@@ -8,7 +8,7 @@ def register(request):
         register_form = CustomRegisterForm(request.POST)
         if register_form.is_valid():
             register_form.save()
-            messages.success(request, ("SUCCESFULL REGISTER!"))
+            messages.success(request, ("REGISTRATION SUCCESS!"))
             return redirect("register")
         else:
             messages.error(request, (register_form.error_messages.keys()))
