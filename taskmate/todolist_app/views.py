@@ -11,7 +11,13 @@ def todolist(request):
     if request.method == "POST":
         form = TaskForm(request.POST or None)
         if form.is_valid():
-            form.save()
+
+            # this code will save first the user manage name and then overwrite task
+            # at the end it will save to the model
+            instance = form.save(commit = False)
+            instance.manage = request.user
+            instance.save()
+
         messages.success(request, ("New Task Added!"))
         return redirect("todolist")
     else:
