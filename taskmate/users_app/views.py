@@ -17,3 +17,5 @@ def register(request):
 
         register_form = CustomRegisterForm()
     return render(request, "register.html", {"register_form": register_form})
+
+
