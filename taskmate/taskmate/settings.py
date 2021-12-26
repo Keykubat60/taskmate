@@ -120,6 +120,7 @@ STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
 # when the user login it will redirect to todolist instead of /profile by default
 LOGIN_REDIRECT_URL = "todolist"
 
+# when users want to todolist and they are not login it will redirect to login page
 LOGIN_URL = "login"
 
 # it is for the current bootstrap version because it is using by default bootstrap version 2
