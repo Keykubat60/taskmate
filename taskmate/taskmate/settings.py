@@ -120,6 +120,8 @@ STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
 # when the user login it will redirect to todolist instead of /profile by default
 LOGIN_REDIRECT_URL = "todolist"
 
+LOGIN_URL = "login"
+
 # it is for the current bootstrap version because it is using by default bootstrap version 2
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
