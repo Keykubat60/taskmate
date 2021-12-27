@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import environ
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -105,11 +106,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [(os.path.join(BASE_DIR, 'static'))]
 VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
+
+
 
 # when the user login it will redirect to todolist instead of /profile by default
 LOGIN_REDIRECT_URL = "todolist"
@@ -119,6 +122,9 @@ LOGIN_URL = "login"
 
 # it is for the current bootstrap version because it is using by default bootstrap version 2
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# add django heroku
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
