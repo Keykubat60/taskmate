@@ -72,8 +72,11 @@ def complete_task(request, task_id):
 @login_required()
 def pending_task(request, task_id):
     task = TaskList.objects.get(pk=task_id)
-    task.done = False
-    task.save()
+    if task.manage == request.user:
+        task.done = False
+        task.save()
+    else:
+        messages.error(request, ("Access Restriced, You Are Not Allowed!"))
     return redirect("todolist")
 
 
