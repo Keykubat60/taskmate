@@ -1,11 +1,28 @@
 {% extends 'base.html' %}
-{% block title%}
-    <title> About Manage - About</title>
-{% endblock title%}
+
+{% block head %}
+    <link rel="stylesheet" href="../../static/css/about.css" media="screen">
+    {% endblock head %}
 
 {% block content %}
-    <div class="container">
-        <h1>{{about}}</h1>
-
-    </div>
+  <section class="u-clearfix u-grey-5 u-section-1" id="sec-6820">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
+          <div class="u-gutter-0 u-layout">
+            <div class="u-layout-row">
+              <div class="u-container-style u-image u-image-contain u-layout-cell u-size-30 u-image-1" data-image-width="1280" data-image-height="672">
+                <div class="u-container-layout u-container-layout-1"></div>
+              </div>
+              <div class="u-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                <div class="u-container-layout u-container-layout-2">
+                  <h2 class="u-text u-text-default u-text-1">Taskmate</h2>
+                  <p class="u-text u-text-2"> This is a website from Alaaddin Sagun, and was made by himself. The website is opensource and has the address: ​https://github.com/Keykubat60/taskmate. It was created including only for website development with Django. And was developed with the intention of learning.<br>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 {% endblock content %}

@@ -1,80 +1,70 @@
 {% extends 'base.html' %}
 
-{% block  title%}
-    <title> Todo List Manage - Taskmate</title>
-{% endblock title %}
+{% block  head %}
+    <link rel="stylesheet" href="../../static/css/todolist.css" media="screen">
+{% endblock head %}
 
-{% block content %}
-<div class="container">
+
+<section class="u-align-center u-grey-5 u-clearfix u-section-1" id="sec-71f4" >
+    {% block content %}
      </br>
     {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <div class="alert alert-primary alert-dismissible fade show" role="alert" style="max-width: 800px ; margin: auto">
       {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
         {% endfor %}
     {% endif %}
-      <form method="POST">
+      <form method="POST" >
     {% csrf_token %}
-  <div class="d-flex">
-      <input type="text" class="form-control d-inline-block" name="task" placeholder="New Task">
-      <button type="submit" class="btn btn-primary d-inline-block">Add</button>
+  <div class="d-flex" style="align-items: center ; justify-content: center ; margin-bottom: 20px" >
+      <input type="text" class="form-control d-inline-block" name="task" placeholder="New Task" style="max-width: 50% ; margin: 10px">
+      <button type="submit" class="btn btn-primary d-inline-block" style="margin: 10px">Add</button>
   </div>
 </form>
-    <br>
-<table class="table table-bordered text-center " >
-    <thead class="table-dark">
-        <tr>
-            <th class="col-7">Task</th>
-            <th class="col-1">Done</th>
-            <th class="col-1">Edit</th>
-            <th class="col-1">delete</th>
-        </tr>
-    </thead>
-     <tbody>
-
-    <div class="container">
-    {% if all_tasks %}
+      <div class="u-clearfix u-sheet u-sheet-1 u-grey-5" style="min-height: 1200px;">
+        <div class="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xl u-table u-table-responsive u-table-1">
+          <table class="u-table-entity u-table-entity-1 table " style="margin-left: 0; margin-right: 0">
+            <colgroup>
+              <col width="67.39%">
+              <col width="11.13%">
+              <col width="10.74%">
+              <col width="10.74%">
+            </colgroup>
+            <thead class="u-palette-3-base u-table-header u-table-header-1">
+              <tr style="height: 72px;">
+                <th class="u-table-cell">Task</th>
+                <th class="u-table-cell">Done</th>
+                <th class="u-table-cell">Edit</th>
+                <th class="u-table-cell">Delete</th>
+              </tr>
+            </thead>
+            <tbody class="u-table-body">
+            {% if all_tasks %}
         {% for obj in all_tasks %}
             {% if obj.done %}
-               <tr class="table-success">
-                   <th class="col-7"><del>{{obj.task}}</del></th>
-                        <td class="col-1"><a href="{% url 'pending_task' obj.id %}"><button type="button" class="btn btn-light">Done</button></a></td>
-                        <td class="col-1"><a href="{% url 'edit_task' obj.id %}"><button type="button" class="btn btn-secondary">Edit</button></a></td>
-                        <td class="col-1"><a href="{% url 'delete_task' obj.id %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
-                </tr>
-            {% else %}
-                <tr>
-                    <th class="col-7">{{obj.task}}</th>
-                        <td class="col-1"><a href="{% url 'complete_task' obj.id %}"><button type="button" class="btn btn-success">Active</button></a></td>
-                        <td class="col-1"><a href="{% url 'edit_task' obj.id %}"><button type="button" class="btn btn-secondary">Edit</button></a></td>
-                        <td class="col-1"><a href="{% url 'delete_task' obj.id %}"><button type="button" class="btn btn-danger">Delete</button></a> </td>
-                    </tr>
-            {% endif %}
+              <tr class="table-success" style="height: 68px;">
+                <td class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-table-cell"><del>{{obj.task}}</del></td>
+                <td class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-table-cell"><a href="{% url 'pending_task' obj.id %}"><button type="button" class="btn btn-light" ></button></a></td>
+                <td class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-table-cell"><a href="{% url 'edit_task' obj.id %}"><button type="button" class="btn btn-secondary"></button></a></td>
+                <td class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-table-cell"><a href="{% url 'delete_task' obj.id %}"><button type="button" class="btn btn-danger"></button></a></td>
+              </tr>
+             {% else %}
+               <tr style="height: 68px;">
+                <td class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-table-cell">{{obj.task}}</td>
+                <td class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-table-cell"><a href="{% url 'complete_task' obj.id %}"><button type="button" class="btn btn-light"></button></a></td>
+                <td class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-table-cell"><a href="{% url 'edit_task' obj.id %}"><button type="button" class="btn btn-secondary"></button></a></td>
+                <td class="u-border-2 u-border-grey-30 u-border-no-left u-border-no-right u-table-cell"><a href="{% url 'delete_task' obj.id %}"><button type="button" class="btn btn-danger"></button></a></td>
+              </tr>
+             {% endif %}
 
         {% endfor %}
     {% endif %}
-    </div>
-     </tbody>
-</table>
-    <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class="page-item"><a class="page-link" href="?pg=1"><<</a></li>
-
-      {% if all_tasks.has_previous%}
-        <li class="page-item"><a class="page-link" href="?pg={{ all_tasks.previous_page_number }}">{{ all_tasks.previous_page_number }}</a></li>
-        {% endif %}
-
-    <li class="page-item"><a class="page-link" href="?pg={{ all_tasks.number }}">{{ all_tasks.number }}</a></li>
-
-      {% if all_tasks.has_next%}
-         <li class="page-item"><a class="page-link" href="?pg={{ all_tasks.next_page_number }}">{{ all_tasks.next_page_number }}</a></li>
-        {% endif %}
-
-    <li class="page-item"><a class="page-link" href="?pg={{ all_tasks.paginator.num_pages }}">>></a></li>
-  </ul>
-</nav>
-</div>
-{% endblock %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+{% endblock content %}

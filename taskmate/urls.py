@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from todolist_app import views as todolist_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -25,5 +27,5 @@ urlpatterns = [
     path('contact', todolist_views.contact, name='contact'),
     path('about', todolist_views.about, name='about'),
     path('account/', include('users_app.urls')),
-]
+]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

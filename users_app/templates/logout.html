@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block title%}
-    <title> Logout - Taskmate</title>
+    <link rel="stylesheet" href="../../templates/css/login.css" media="screen">
 {% endblock title%}
 
 {% block content %}
-    <div class="container">
-        <h1 style="text-align: center">LOGGED OUT From Taskmate,</h1>
-        <h2 style="text-align: center">Thank You For Using Us!</h2>
-
-        </br>
+  <div class="u-clearfix u-sheet u-sheet-1 u-grey-5" style="height: 1000px">
+        <h6 class="u-text u-text-1" style="text-align: center">Thank YOU FOR USING US</h6>
+        <h3 class="u-custom-font u-font-montserrat u-text u-text-2" style="text-align: center">YOU LOGOUT</h3>
+        <div class="u-border-10 u-border-palette-3-base u-expanded-width u-line u-line-horizontal u-line-1"></div>
+      </div>
     {% if messages %}
         {% for message in messages %}
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
